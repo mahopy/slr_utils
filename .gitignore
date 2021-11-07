@@ -1,0 +1,5 @@
+venv
+*.csv
+.idea
+__pycache__/
+*.txt
