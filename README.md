@@ -22,3 +22,7 @@ So the Duplicate Finder knows later in which file this title has appeared for th
 The Google Scholar Meta Retriever is designed to automatically evaluate the search results for a topic from Google Scholar.
 For this, however, the search results must be downloaded via the "Save as" dialog in the browser.
 If you save all pages of a search (page 1, page 2, page 3) in a folder and apply the meta retriever to it, it will automatically find and copy all titles into one file.
+
+### bib_title_abstract_scan
+Some search engines for scientific literature can search for specific keywords, but often unfortunately only in, for example, the full text. Without being able to make restrictions here.
+The Title Abstract Scan for .bib files helps here, because it can read .bib files and search their title and abstract for certain search terms. It outputs these at the end.
