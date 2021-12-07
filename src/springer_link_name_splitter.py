@@ -5,8 +5,14 @@ Therefore we copy the full column and save it to a .txt file.
 Then run this script and copy the output from the console to excel.
 Then we have our authors in reasonable arrangement
 '''
+from tkinter import filedialog as fd
 
-with open('test.txt', encoding='utf') as f:
+
+filename = fd.askopenfile()
+filename = filename.name
+
+with open(filename, encoding='utf') as f:
+    print("opened file")
     for line in f:
         current_authors = line.strip()
         new_string = ""
