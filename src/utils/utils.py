@@ -1,14 +1,18 @@
 import os
-from typing import List
+from typing import List, Set, Tuple
+from tkinter import filedialog as fd
+
+from pybtex.database.input import bibtex
 
 
-def get_files_with_type_from_folder(folder: str, file_type: str) -> List:
+def get_files_with_type_from_folder(file_type: str) -> Tuple[str, List]:
+    data_folder = fd.askdirectory()
     files = []
-    for file in os.listdir(folder):
+    for file in sorted(os.listdir(data_folder)):
         if file.endswith(file_type):
-            files.append(folder+'/'+file)
+            files.append(data_folder+'/'+file)
 
-    return files
+    return data_folder, files
 
 
 def get_entry_as_string(entry, headlines, join_string) -> str:
@@ -30,3 +34,17 @@ def get_entry_as_string(entry, headlines, join_string) -> str:
             current_value = 'None'
         current_run.append(current_value)
     return f'{join_string.join(current_run)}{join_string}{author_string}\n'
+
+
+def get_headlines(files: List) -> Set:
+    # open a bibtex file
+    parser = bibtex.Parser()
+
+    headlines = set()
+    for file_to_open in files:
+        bibdata = parser.parse_file(file_to_open)
+        for bib_id in bibdata.entries:
+            keys = bibdata.entries[bib_id].fields
+            for key in keys:
+                headlines.add(key)
+    return headlines

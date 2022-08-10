@@ -13,18 +13,18 @@ import pandas as pd
 from utils import utils
 from langdetect import detect
 from tkinter import filedialog as fd
+from utils import config
 
 
-data_folder = fd.askdirectory()
 
-files = utils.get_files_with_type_from_folder(str(data_folder), '.csv')
+data_folder, files = utils.get_files_with_type_from_folder('.csv')
 
 df = pd.concat([pd.read_csv(f, sep=";") for f in files]).reset_index(drop=True)
 
 for columns in df.columns:
     df['title_low'] = df['title'].str.lower()
 
-# since the duplicated function of pandas is case sensitive, we lowercase the titles
+# since the duplicated function of pandas is case-sensitive, we lowercase the titles
 df['duplicated'] = np.where(df['title_low'].duplicated(), True, '')
 
 #  Select all files where duplicated is True
@@ -41,4 +41,4 @@ for index, row in df_duplicates.iterrows():
     df.loc[df.index[index], 'origin'] = ref
 
 
-df.to_csv("output.csv", index=False, sep=";", encoding="utf-8")
+df.to_csv("output.csv", index=False, sep=";", encoding='utf8')
