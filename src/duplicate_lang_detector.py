@@ -12,14 +12,11 @@ import pandas as pd
 
 from utils import utils
 from langdetect import detect
-from tkinter import filedialog as fd
-from utils import config
-
-
 
 data_folder, files = utils.get_files_with_type_from_folder('.csv')
 
-df = pd.concat([pd.read_csv(f, sep=";") for f in files]).reset_index(drop=True)
+df = pd.concat([pd.read_csv(f, sep=";", encoding='unicode_escape') for f in files]).reset_index(drop=True)
+
 
 for columns in df.columns:
     df['title_low'] = df['title'].str.lower()
