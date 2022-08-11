@@ -40,5 +40,4 @@ for index, row in df_duplicates.iterrows():
     ref = df.iloc[idx]['ref']
     df.loc[df.index[index], 'origin'] = ref
 
-
 df.to_csv("output.csv", index=False, sep=";", encoding="utf-8")

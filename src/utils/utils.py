@@ -4,7 +4,7 @@ from typing import List
 
 def get_files_with_type_from_folder(folder: str, file_type: str) -> List:
     files = []
-    for file in os.listdir(folder):
+    for file in sorted(os.listdir(folder)):
         if file.endswith(file_type):
             files.append(folder+'/'+file)
 
