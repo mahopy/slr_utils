@@ -32,12 +32,12 @@ for column in author_column:
     if pd.notna(column):
         print_string = column
         if not everything_is_capitalized(column):
-            for i, v in enumerate(column):
-                if i != 0:
-                    if column[i].isupper():
-                        if column[i-1] != " " and column[i-1] != "-":
+            for char_index, current_char in enumerate(column):
+                if char_index != 0:
+                    if current_char.isupper():
+                        if column[char_index - 1] != " " and column[char_index - 1] != "-":
                             author_string = author_string + "; "
-                author_string = author_string + column[i]
+                author_string = author_string + current_char
             print_string = author_string
     updated_authors.append(print_string)
 
