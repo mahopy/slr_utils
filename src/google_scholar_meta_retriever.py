@@ -31,4 +31,3 @@ for file_to_open in files:
             print(csv_row)
 
 output_file.close()
-
