@@ -24,8 +24,6 @@ for file in files:
         if word == "References" or word == "REFERENCES":
             is_reference = True
 
-
-
     current_file = file.rsplit('/', 1)[1]
     print(f'---- {current_file} ----')
     print(f'{references}')

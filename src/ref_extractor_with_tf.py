@@ -16,8 +16,8 @@ from utils import utils as ut
 
 lemmatizer = WordNetLemmatizer()
 
-# folder = fd.askdirectory()
-folder, files = ut.get_files_with_type_from_folder('.pdf')
+folder = fd.askdirectory()
+files = ut.get_files_with_type_from_folder(folder, '.pdf')
 
 for file in files:
 

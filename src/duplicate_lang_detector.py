@@ -34,7 +34,14 @@ for index, row in df_duplicates.iterrows():
     # get the index of the row, where title of the current duplicate first appears in df
     idx = (df['title_low'] == row['title_low']).idxmax()
     # get the ref of this
-    ref = df.iloc[idx]['ref']
+
+    # workaround for strange error
+    print(df.columns.tolist())
+    print(df.columns[0])
+
+    # ref = df.iloc[idx]['ref']
+    # ref isnt ref any more but "ï»¿ref". Dont know why.
+    ref = df.iloc[idx][df.columns[0]]
     df.loc[df.index[index], 'origin'] = ref
 
 
